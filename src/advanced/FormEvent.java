@@ -8,7 +8,8 @@ public class FormEvent extends EventObject //EventObject constructor accepts an 
 private String name;
 private String Occupation;
 private int id;
-
+private String comboselection;
+private String radioButtonSelection;
 
 	
 	public FormEvent(Object source ) {
@@ -31,6 +32,16 @@ private int id;
 	this.setId(id);
 	 
  }
+ public FormEvent (Object source,String name,String occupation,int id,String radioButtonSelection,String JcomboSelection)
+ {
+	super(source);
+	this.setName(name);
+	this.setOccupation(occupation);
+	this.setId(id);
+	this.comboselection=JcomboSelection;
+	this.radioButtonSelection=radioButtonSelection;
+	 
+ }
 public String getName() {
 	return name;
 }
@@ -48,6 +59,18 @@ public int getId() {
 }
 public void setId(int id) {
 	this.id = id;
+}
+public String getComboselection() {
+	return comboselection;
+}
+public void setComboselection(String comboselection) {
+	this.comboselection = comboselection;
+}
+public String getRadioButtonSelection() {
+	return radioButtonSelection;
+}
+public void setRadioButtonSelection(String radioButtonSelection) {
+	this.radioButtonSelection = radioButtonSelection;
 }
 	
 	

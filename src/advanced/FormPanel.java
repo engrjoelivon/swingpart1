@@ -13,10 +13,15 @@ import java.awt.TextField;
 import javax.swing.JList;
 
 import javax.swing.BorderFactory;
+import javax.swing.ButtonGroup;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
+import javax.swing.JCheckBox;
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JButton;
+import javax.swing.JRadioButton;
 import javax.swing.border.Border;
 
 public class FormPanel extends JPanel implements ActionListener {
@@ -31,14 +36,38 @@ public class FormPanel extends JPanel implements ActionListener {
 	private String occupationName;
 	private EventListener eventListener;
 	private AgeCategory ageCat;
+	private JComboBox employTypes;
+	private JCheckBox citizenCheck;
+	private TextField taxcheckField;
+	private JRadioButton maleButton;
+	private JRadioButton femaleButton;
+	private ButtonGroup  buttonGroup;
 	
 	
 	public FormPanel ()
 	{
+///////////   text fields and buttons///////////////////////////////
 		name =new TextField(10);
 		occupation=new TextField(10);
+		taxcheckField =new TextField(10);
+		citizenCheck=new JCheckBox();
+		taxcheckField.setEnabled(false);
 		jButton=new JButton("register");
 		jButton.addActionListener(this);
+		citizenCheck.addActionListener(this);
+		
+//////////radioButton////////////
+  maleButton=new JRadioButton();
+  femaleButton=new JRadioButton();
+  buttonGroup=new ButtonGroup();
+  buttonGroup.add(femaleButton);
+  buttonGroup.add(maleButton);
+  maleButton.setSelected(true);
+  maleButton.setActionCommand("MALE"); //this is used to set an identifier for the button and can be retrived when form is submitted	
+  femaleButton.setActionCommand("MALE")	;
+		
+		
+		
 		
 ///////////jlist///////////////		
 		ageList=new JList();
@@ -61,6 +90,15 @@ public class FormPanel extends JPanel implements ActionListener {
 		nameLabel=new JLabel(image);
 		
 		
+//////////jcomboBox///////////////////////
+		employTypes=new JComboBox();
+		DefaultComboBoxModel dCBM=new DefaultComboBoxModel();
+		dCBM.addElement("Engineer");
+		dCBM.addElement("Programmer");
+		dCBM.addElement("Economist");
+		dCBM.addElement("Designer");
+		employTypes.setModel(dCBM);
+		
 		
 		
 		Dimension dim=getPreferredSize();
@@ -70,6 +108,12 @@ public class FormPanel extends JPanel implements ActionListener {
 		Border innerbBorder=BorderFactory.createEmptyBorder(5,5,5,5);
 		Border outer=BorderFactory.createLineBorder(Color.BLACK);
 		setBorder(BorderFactory.createCompoundBorder(outer, innerbBorder));
+		layoutHandler();
+
+	}
+                         ////////////defined the layoout///////////////////////
+	public void layoutHandler()
+	{
 		GridBagLayout gBL=new GridBagLayout();
 		setLayout(gBL);
 		GridBagConstraints gBC=new GridBagConstraints();
@@ -112,34 +156,123 @@ add(ageList,gBC);
 
 
 
-/////////////////row4///////////////////////////
+/////////////////row4 Jcombo///////////////////////////
+gBC.weightx=1;
+gBC.weighty=0.2;
+gBC.gridx=1;
+gBC.gridy=3;
+gBC.anchor=GridBagConstraints.FIRST_LINE_START;
+
+
+add( employTypes,gBC);
+
+
+gBC.gridx=0;
+gBC.gridy=3;
+
+add( new JLabel("JCombo"),gBC);
+
+///////////////////row 5 jcheckbox/////////////////////////
+gBC.weightx=1;
+gBC.weighty=0.2;
+gBC.gridx=1;
+gBC.gridy=4;
+gBC.anchor=GridBagConstraints.FIRST_LINE_START;
+
+
+add(citizenCheck ,gBC);
+
+
+gBC.gridx=0;
+gBC.gridy=4;
+
+add( new JLabel("JCheckBox"),gBC);
+
+
+/////////////////row 6///////////////////////
+gBC.weightx=1;
+gBC.weighty=0.2;
+gBC.gridx=1;
+gBC.gridy=5;
+gBC.anchor=GridBagConstraints.FIRST_LINE_START;
+
+
+add( taxcheckField,gBC);
+
+
+gBC.gridx=0;
+gBC.gridy=5;
+
+add( new JLabel("TaxNumber"),gBC);
+
+
+
+/////////////////row 7   JradioButton///////////////////////
+gBC.weightx=1;
+gBC.weighty=0.03;
+gBC.gridx=1;
+gBC.gridy=6;
+gBC.anchor=GridBagConstraints.FIRST_LINE_START;
+add( maleButton,gBC);
+
+
+gBC.gridx=0;
+gBC.gridy=6;
+
+add( new JLabel("Radio Buttons"),gBC);
+
+
+/////////////////row 8   ///////////////////////
+gBC.weightx=1;
+gBC.weighty=0.2;
+gBC.gridx=1;
+gBC.gridy=7;
+gBC.anchor=GridBagConstraints.FIRST_LINE_START;
+
+
+add( femaleButton,gBC);
+
+
+
+/////////////////row9///////////////////////////
 gBC.weightx=1;
 gBC.weighty=2.5;
 gBC.gridx=1;
-gBC.gridy=2;
+gBC.gridy=8;
 gBC.anchor=GridBagConstraints.LAST_LINE_START;
 add(jButton,gBC);
-
+		
+		
 	}
-
-	/**
-	 * 
-	 */
+	
+	//////////////////////ACTION PERFORMED IMPLEMENTATION////////////////////
 	
 	public void actionPerformed(ActionEvent e) {
+		
+		if(e.getSource()==jButton)
+		{
 		
 	 username=name.getText();
 	 occupationName=occupation.getText();
 	 ageCat=(AgeCategory)ageList.getSelectedValue();
-	 //System.out.println(ageCat);
-	//formevent =new FormEvent(this, username,occupationName);
-	formevent=new FormEvent(this, username, occupationName, ageCat.id);
+	 String jcomboSelection=(String)employTypes.getSelectedItem();
+	 //formevent =new FormEvent(this, username,occupationName);
+	 //formevent=new FormEvent(this, username, occupationName, ageCat.id);
+	formevent=new FormEvent(this, username, occupationName, ageCat.id,buttonGroup.getSelection().getActionCommand(),jcomboSelection);
 	
 	if(eventListener!= null)
-	{  eventListener.eventOccured(formevent);                      }
-		
+	{  eventListener.eventOccured(formevent); }                     }
+		else
+			{
+			
+			taxcheckField.setEnabled(citizenCheck.isEnabled());
+			}
 		
 	}
+		
+		
+		
+	
 public void formEventlistener(EventListener eventListener)//accepts an eventlistener and initializes the field variable.
 {   this.eventListener=eventListener; 
 	

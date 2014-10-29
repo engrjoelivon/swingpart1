@@ -20,7 +20,7 @@ public class Display extends JPanel  {
 	public Display()
 	{
 	
-		textArea =new TextArea("hello");
+		textArea =new TextArea();
 		textArea.setBackground(Color.GRAY);
 		
 	Dimension dim=new Dimension();
@@ -31,7 +31,7 @@ public class Display extends JPanel  {
 	setSize(dim);
 	
 	setLayout(new BorderLayout());
-  add(new JScrollPane(textArea) ,BorderLayout.CENTER);
+  add(textArea ,BorderLayout.CENTER);
 	}
 public void displayText(String arg)
 {

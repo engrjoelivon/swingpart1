@@ -38,6 +38,8 @@ public class ControllerFrame extends JFrame {
 		display.displayText(e.getName()+"\n ");
 		display.displayText(e.getOccupation()+ "\n ");
 		display.displayText(inte.toString()+"\n ");
+		display.displayText(e.getComboselection()+ "\n");
+		display.displayText(e.getRadioButtonSelection()+ "\n");
 			
 		}
 	});
