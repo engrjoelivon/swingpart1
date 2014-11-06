@@ -19,17 +19,21 @@ import javax.swing.JOptionPane;
 import javax.swing.JRadioButtonMenuItem;
 import javax.swing.KeyStroke;
 
-import sun.management.jdp.JdpGenericPacket;
+import advanced_controller.Controller;
+
+
 
 
 public class ControllerFrame extends JFrame {
 	private FormPanel formpanel;
 	private Display display;
 	private JFileChooser filechooser;
+	private Controller controller;
 	
 	public ControllerFrame ()
 	{
 		super("Advanced");
+		controller=new Controller();
 	formpanel=new FormPanel();
 	display=new Display();
 	filechooser=new JFileChooser();
@@ -48,11 +52,11 @@ public class ControllerFrame extends JFrame {
 	Dimension dim=getPreferredSize();
 	dim.width=600;
 	dim.height=500;
-	formpanel.formEventlistener(new EventListener() //pass in anonymous class interface for the defined interface
+	formpanel.formEventlistener(new EventListener() //pass in anonymous class interface eventlistener
 	
 	{
 		
-		public void eventOccured(FormEvent e) //Override the eventOccured method, call appropriate getters methods to pass parameters to display panel
+		public void eventOccured(FormEvent e) //Override the eventOccured method , call appropriate getters methods to pass parameters to display panel
 		
 		{
 			Integer inte=new Integer(e.getId());
@@ -61,7 +65,7 @@ public class ControllerFrame extends JFrame {
 		display.displayText(inte.toString()+"\n ");
 		display.displayText(e.getComboselection()+ "\n");
 		display.displayText(e.getRadioButtonSelection()+ "\n");
-			
+		controller.addPerson(e);	
 		}
 	});
 	
