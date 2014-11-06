@@ -64,7 +64,7 @@ public class FormPanel extends JPanel implements ActionListener {
   buttonGroup.add(maleButton);
   maleButton.setSelected(true);
   maleButton.setActionCommand("MALE"); //this is used to set an identifier for the button and can be retrived when form is submitted	
-  femaleButton.setActionCommand("MALE")	;
+  femaleButton.setActionCommand("FEMALE")	;
 		
 		
 		
@@ -105,9 +105,11 @@ public class FormPanel extends JPanel implements ActionListener {
 		dim.width=300;
 		setPreferredSize(dim);
 		setBackground(Color.BLUE);
-		Border innerbBorder=BorderFactory.createEmptyBorder(5,5,5,5);
+		//Border innerbBorder=BorderFactory.createEmptyBorder(5,5,5,5);
+		Border innerBorder=BorderFactory.createTitledBorder("Person Form");
+		
 		Border outer=BorderFactory.createLineBorder(Color.BLACK);
-		setBorder(BorderFactory.createCompoundBorder(outer, innerbBorder));
+		setBorder(BorderFactory.createCompoundBorder(outer, innerBorder));
 		layoutHandler();
 
 	}
