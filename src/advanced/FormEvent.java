@@ -1,5 +1,9 @@
 package advanced;
-
+/*
+ * This class has an overloaded constructor because i kept changing the constructor as the project grew.Most of the constructor are
+ * the same as the one used.
+ * 
+ * */
 import java.util.EventObject;
 
 

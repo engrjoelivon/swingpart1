@@ -44,6 +44,7 @@ public class FormPanel extends JPanel implements ActionListener {
 	private ButtonGroup  buttonGroup;
 	
 	
+	
 	public FormPanel ()
 	{
 ///////////   text fields and buttons///////////////////////////////
@@ -63,7 +64,7 @@ public class FormPanel extends JPanel implements ActionListener {
   buttonGroup.add(femaleButton);
   buttonGroup.add(maleButton);
   maleButton.setSelected(true);
-  maleButton.setActionCommand("MALE"); //this is used to set an identifier for the button and can be retrived when form is submitted	
+  maleButton.setActionCommand("MALE"); //this is used to set an identifier or a string for the button and can be retrived when form is submitted	
   femaleButton.setActionCommand("FEMALE")	;
 		
 		
@@ -81,7 +82,7 @@ public class FormPanel extends JPanel implements ActionListener {
 		ageList.setBorder(BorderFactory.createEtchedBorder());
 		
 
-//////////jlabel////////////////////////////
+//////////jlabel with image////////////////////////////
 		occupationLabel=new JLabel("Occupation");
 		Dimension diml=getPreferredSize();
 		diml.width=20;
@@ -113,7 +114,7 @@ public class FormPanel extends JPanel implements ActionListener {
 		layoutHandler();
 
 	}
-                         ////////////defined the layoout///////////////////////
+                         ////////////defined the layout///////////////////////
 	public void layoutHandler()
 	{
 		GridBagLayout gBL=new GridBagLayout();
@@ -271,7 +272,7 @@ add(jButton,gBC);
 			}
 		
 	}
-		
+
 		
 		
 	

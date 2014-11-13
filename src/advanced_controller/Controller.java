@@ -1,5 +1,7 @@
 package advanced_controller;
 
+
+
 import advanced.FormEvent;
 import advancedmodals.AgeCategory;
 import advancedmodals.DataBase;
@@ -7,12 +9,17 @@ import advancedmodals.EmploymentCat;
 import advancedmodals.Gender;
 import advancedmodals.Person;
 
+import java.io.File;
+import java.io.IOException;
+import java.util.List;
+
 public class Controller {
+	private DataBase db=new DataBase();
 		
-	public Controller(){}
+	
 	public void addPerson(FormEvent eV)
 	{
-		DataBase db=new DataBase();
+		
 		String name=eV.getName();
 		String Occupation=eV.getOccupation();
 		String comboSelection=eV.getComboselection();//serving as employment
@@ -48,7 +55,7 @@ public class Controller {
 		 }
 		 else
 		 { employmentCat=EmploymentCat.OTHER;     System.err.println(comboSelection);}
-		//converting string from radioButtongender to genderenumeration for the person class//
+		//converting string from radio Buttongender to genderenumeration for the person class//
 		 Gender gender;
 		 
 		 if(radioButtonsel=="MALE")
@@ -65,5 +72,24 @@ public class Controller {
 		
 	}
 	
+public List<Person> getPerson()
+{
+ return db.getPerson();	
+}
+///Wrapper Methods////
+public void ReadFile(File file) throws IOException
+{
+		db.ReadFromFile(file);
 
+}
+
+public void WriteFile(File file) throws IOException
+{
+	
+	db.WriteToFile(file);
+}
+
+public void deleteRow(int row) {
+	db.deletePerson(row);
+}
 }
