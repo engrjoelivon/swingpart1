@@ -1,0 +1,28 @@
+                 intermediary package
+The mainframeinter acts as a controller,hooking together all the panels that will be contained in this GUI application.
+The focus here is to design a gui application in which every components or group of components has minimal or no
+connection to one another except from the controller class.
+When the main MainFrameInter class runs it creates a GUI application based on the components defined in its constructor its constructor is overloaded
+The constructor that does not accept a paramater a simpler way this can be done,but does not achieve our total desire.
+It  passes an instance of the TextPanelInter class to the the ToolBarClass this ensures the ToolBarClass has a reference of the TextPanelInter.
+When a button is pressed on the GUI,execution is immediately transferred to the action performed interface,where codes are defind
+to decipher which of the buttons invoked the execution.Immediately this is exterblished the,reference that has been previously made
+to the TextPanelInter class makes a call to the appendText method of the TextPanelInter class.After which a text is displayed to the
+text area.
+
+  The problem with the previous application is that we still have connection between the TextPanelInter and the ToolBarClass2 due to the ref
+  reference is directly made within the toolbarInter class to the TextPanelInter class.
+  To resolve this the overloaded constructor that accepts a string defines a different version ie toolBarInter2.
+first an interface is defined to act as the bridge between the toolBarInter2 class and the MainFrameInter class.The MainFrameInter()
+loads and creates an anonymous class of this interface,as a paramter to the  StringListener method of the toolBarInter2 class.
+Within this anonymous class It defines all the necessary algoritm to display the text within the textEmitted method.
+
+  This interface named TextController contains a method called named textEmitted.The toolBarInter2 defined a method named stringListener()
+It accept a textcontroller interface as a parameter.This paramter is then used within the action performed method to call the textEmitted()
+that has already been defined within the anonymous class set earlier in the MainFrameClass.
+When a button is pressed invocation is immediately moved to the action performed method,the action performed methods first checks which
+of the button component made the action,then it further checks if the textcontroller has been initialized.If yes it means the
+textcontroller object now holds a new instance.Then with this new we can perform actions based on the algorithm it contains.
+
+
+

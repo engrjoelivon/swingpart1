@@ -1,0 +1,8 @@
+                 To Create A basic java swing
+  Create an instance of Jpanel by default it is invisible so call setVisble(true)
+  Call setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE) this method will ensure it closes when you click in the close sign
+  Call setSize() to give it a dimension.
+  Most java swing might have to perform some operation that might delay,e.g reading from a source
+that means it will be better to have a swing in a thread.The swingUtilites can easily do that.call
+SwingUtilities.invokeLater() and passing in a runnable.Within the run,run method of the runnable declare the swing
+codes.

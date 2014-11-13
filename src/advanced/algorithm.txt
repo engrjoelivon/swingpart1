@@ -1,0 +1,26 @@
+This package focuses on advanced ways to create communications between panels in a GUI applications.
+        Create a controller class(Controllerframe.java) to control all activity in the GUI.
+        define all related activities in seperate panels.
+        create a class that extends eventObject to temporarily hold instance of datas to be transferred.The construction must define an object as a parameter so that it can be passed to super.
+        Define an interface(EventListener.java) to act as a bridge between the panels and the controller class.
+        
+When the application starts,the JFRAME constructor get invoked,it sets up every instance of the panel class,
+then calls a method defined from the Formevent class,passing in an anonymous class for eventlistener interface.
+Within this interface the eventOccured method is overridden,appropriate getters methods for the formevent class 
+is invoked and passed to the DisplayPanel class method displaytext.
+    Execution moves to the FormPanel Class formEventlistener() this method then stores an eventlistener variable recieved 
+from the invocation as a field variable for this class.
+    Execution moves back to the Controller class then create the GUI based on the set parameters.
+When a button is pressed execution immediately moves into the actionPerformed method of the formPanel class.The textFields are stripped off the text 
+contain.These parameters are then used to create a new formEvent Object.A check is performed to ensure that the eventListener variable defined,is not 
+null,if false this variable is used to invoke its eventOccured method and the formEvent instance created earlier is passed into it as a parameter.
+Remember earlier that this eventListner is the same one passed in from the controller class.
+Execution now moves into the eventOccured method,invoking all the methods as defined in the anonymous class passed in by the controller class.
+    I added a Jcombo box to the formpanel class,because of this the laymanager is getting too bulky,i had to move it to a different method.
+To send the itemselected from the Jcombo,it can be done exactly as a JList,but take note of the fact that Jcombo is editable,bacause 
+if the user edits an item,then it will not match the id.To curb this i created a private class that defines instances for the jcombo items ie an id and a name
+ I added radio buttons and checkbuttons,the example is self explanatory.
+ Next i added a Jmenubar,jfilechooser and jfilechooserfilter.
+   I created a prefdialog class,this class extends the Jdialog component.for jdialog component to be visible call its setvisible method.
+       
+   

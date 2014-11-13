@@ -1,0 +1,5 @@
+the advacedmodal package is created to serve as a backend,meaning its purpose is to store all 
+the datas coming from the application(GUI) or frontend.
+The person class is defined to have as its fields every different datas coming from the GUI
+datas coming from gender,Jlist and Jcombos are defined as enum types because they are limited.
+ie the AgeCategory,EmploymentCat and Gender.

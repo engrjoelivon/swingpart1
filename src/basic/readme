@@ -1,0 +1,5 @@
+The swing class is used in java to build gui application.
+The Basic.java class defines a very basic gui application using JFRAME container,components and a swingclass to display the app.
+The MainFrame class is well defined class that extends the JFRAME.class,its function is to act as a controller organinsing all the component that will be displayed.
+    In the example above these componenets come from the Toolbar and the textpanel class.
+The TextPanel and the toolbox is defined so that each component and its activities can be defined seperately,then added to the Mainframe,these helps for easy debugging.

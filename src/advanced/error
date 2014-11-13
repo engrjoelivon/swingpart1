@@ -1,0 +1,5 @@
+Without setting a layout i added dimension,the panel sized itself,not based on the dimension i added.
+Because i did not give the display.java a layout,when the panel inflates,it does not display the text i type at 
+the beggining of the line,rather it get display at the far end,thats not displayed on the screen until i type long
+lengths of words,then it come shows on the screen. 
+-

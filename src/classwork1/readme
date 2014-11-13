@@ -1,0 +1,6 @@
+This week class work designs a simple swing application,that does age calculation.
+class ControllerClass is the main class.
+Class Controller interface serves as a bridge to send information from the entry.java class to the controller class,because activities 
+ in an application should only happen in the controller interface.
+The screen class is the class that display the info from the entry class.
+The entry class is where information are entered into application.

@@ -1,0 +1,2 @@
+The controller class bridges communication between the frontend package(advanced) and the backend package(advanced modals).
+It defines a class (controller.java) that organises and funnels the datas from the frontend to the backend vise versa.
